@@ -1,0 +1,7 @@
+{
+  "name": "ChatGPT Voice Confidence MVP",
+  "description": "A high-fidelity voice interface prototype for Hinglish speakers, featuring real-time captions with confidence indicators, privacy controls, and seamless state transitions.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
