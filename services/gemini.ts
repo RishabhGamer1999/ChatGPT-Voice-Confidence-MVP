@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
 
 export const getAIInstance = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
@@ -10,9 +9,12 @@ export async function getHinglishResponse(userInput: string) {
       model: "gemini-3-flash-preview",
       contents: userInput,
       config: {
-        systemInstruction: `You are a helpful AI assistant that understands Hinglish. 
-        Respond in a natural Hinglish tone. 
-        Keep responses concise for a voice interface.`,
+        systemInstruction: `You are a helpful AI assistant. 
+        Detect the language the user is using and mirror it exactly in your response.
+        - If the user speaks in English, respond in English.
+        - If the user speaks in Hindi, respond in Hindi.
+        - If the user speaks in mixed Hinglish, respond in natural Hinglish.
+        Keep responses concise and natural for a voice interface.`,
         temperature: 0.7,
       },
     });
