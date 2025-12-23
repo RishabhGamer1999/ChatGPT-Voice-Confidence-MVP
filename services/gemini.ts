@@ -1,13 +1,7 @@
 
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, Modality } from "@google/genai";
 
-export const getAIInstance = () => {
-  const apiKey = process.env.API_KEY;
-  if (!apiKey) {
-    console.error("API_KEY environment variable is not set.");
-  }
-  return new GoogleGenAI({ apiKey: apiKey || "" });
-};
+export const getAIInstance = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export async function getHinglishResponse(userInput: string) {
   const ai = getAIInstance();
@@ -22,13 +16,14 @@ export async function getHinglishResponse(userInput: string) {
         temperature: 0.7,
       },
     });
-    return response.text || "No response received.";
+    return response.text;
   } catch (error) {
     console.error("Gemini Error:", error);
     return "Maafi chahta hoon, kuch error aa gaya.";
   }
 }
 
+// Helper for Live API Base64 encoding/decoding
 export function encodeAudio(bytes: Uint8Array) {
   let binary = '';
   const len = bytes.byteLength;
