@@ -1,7 +1,8 @@
+
 import { GoogleGenAI } from "@google/genai";
 
 export const getAIInstance = () => {
-  const apiKey = (process.env as any).API_KEY;
+  const apiKey = process.env.API_KEY;
   if (!apiKey) {
     console.error("API_KEY environment variable is not set.");
   }
